@@ -1,0 +1,82 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg, #1a1a2e, #16213e);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #ffffff;
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    animation: popin 0.5s ease-in-out;
+}
+
+input[type="number"], button {
+    display: block;
+    width: 100%;
+    margin: 15px 0;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    font-size: 16px;
+}
+
+input[type="number"] {
+    background: rgba(255,255,255,0.1);
+    color: #fff;
+    outline: none;
+}
+
+button {
+    background: #ff4ecd;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+button:hover {
+    background: #ff2dcf;
+}
+
+.prediction-text {
+    font-size: 24px;
+    margin: 20px 0;
+    color: #ffb6f9;
+    text-shadow: 1px 1px 10px #ff4ecd;
+}
+
+.back-btn {
+    text-decoration: none;
+    color: #ff4ecd;
+    display: inline-block;
+    margin-top: 20px;
+    transition: transform 0.2s;
+}
+
+.back-btn:hover {
+    transform: scale(1.1);
+}
+
+@keyframes popin {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+    

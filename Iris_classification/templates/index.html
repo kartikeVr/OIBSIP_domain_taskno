@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iris Flower Classifier</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="glass-card">
+        <h1>🌸 Iris Flower Classifier</h1>
+        <form action="/predict" method="POST">
+            <input type="number" name="sepal_length" step="0.01" placeholder="Sepal Length (cm)" required>
+            <input type="number" name="sepal_width" step="0.01" placeholder="Sepal Width (cm)" required>
+            <input type="number" name="petal_length" step="0.01" placeholder="Petal Length (cm)" required>
+            <input type="number" name="petal_width" step="0.01" placeholder="Petal Width (cm)" required>
+            <button type="submit">🌺 Classify</button>
+        </form>
+    </div>
+</body>
+</html>

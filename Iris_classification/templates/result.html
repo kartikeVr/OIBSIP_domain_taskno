@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .result-box {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px 50px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .result-box h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .result-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: #ff87f3;
+            text-shadow: 0 0 10px #ff87f3;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: transparent;
+            color: #ff4ecd;
+            border: 1px solid #ff4ecd;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .back-link:hover {
+            background-color: #ff4ecd;
+            color: white;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="result-box">
+        <h1>🌼 Result</h1>
+        <div class="result-text">{{ prediction }}</div>
+        <a href="/" class="back-link">← Try Again</a>
+    </div>
+</body>
+</html>
