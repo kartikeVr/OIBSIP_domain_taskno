@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Prediction Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="result-container">
+    <h1>📩 Email Classification Result</h1>
+    
+    <div class="output-box {% if output == 'Spam' %}spam{% elif output == 'Ham' %}ham{% else %}error{% endif %}">
+      {{ output }}
+    </div>
+
+    <a href="/" class="back-btn">← Classify Another Email</a>
+  </div>
+</body>
+</html>
