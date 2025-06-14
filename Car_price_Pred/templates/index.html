@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <i class="fas fa-car"></i>
+            <h1>Car Price Prediction</h1>
+            <p>Get instant price estimates for used cars</p>
+        </div>
+        
+        <form action="/predict" method="POST" class="prediction-form">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="car_name">
+                        <i class="fas fa-car-side"></i> Car Name
+                    </label>
+                    <input type="text" 
+                           id="car_name" 
+                           name="car_name" 
+                           placeholder="e.g., Honda City" 
+                           required
+                           value="{{ car_name if car_name else '' }}">
+                </div>
+                
+                <div class="form-group">
+                    <label for="year">
+                        <i class="fas fa-calendar"></i> Manufacturing Year
+                    </label>
+                    <input type="number" 
+                           id="year" 
+                           name="year" 
+                           min="2000" 
+                           max="2024" 
+                           placeholder="e.g., 2020" 
+                           required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="present_price">
+                        <i class="fas fa-tag"></i> Current Ex-Showroom Price (in Lakhs)
+                    </label>
+                    <input type="number" 
+                           id="present_price" 
+                           name="present_price" 
+                           step="0.01" 
+                           placeholder="e.g., 10.5" 
+                           required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="driven_kms">
+                        <i class="fas fa-road"></i> Kilometers Driven
+                    </label>
+                    <input type="number" 
+                           id="driven_kms" 
+                           name="driven_kms" 
+                           placeholder="e.g., 50000" 
+                           required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="fuel_type">
+                        <i class="fas fa-gas-pump"></i> Fuel Type
+                    </label>
+                    <select id="fuel_type" name="fuel_type" required>
+                        <option value="">Select Fuel Type</option>
+                        <option value="Petrol">Petrol</option>
+                        <option value="Diesel">Diesel</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="selling_type">
+                        <i class="fas fa-handshake"></i> Seller Type
+                    </label>
+                    <select id="selling_type" name="selling_type" required>
+                        <option value="">Select Seller Type</option>
+                        <option value="Dealer">Dealer</option>
+                        <option value="Individual">Individual</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transmission">
+                        <i class="fas fa-cogs"></i> Transmission Type
+                    </label>
+                    <select id="transmission" name="transmission" required>
+                        <option value="">Select Transmission</option>
+                        <option value="Manual">Manual</option>
+                        <option value="Automatic">Automatic</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="owner">
+                        <i class="fas fa-user"></i> Number of Previous Owners
+                    </label>
+                    <select id="owner" name="owner" required>
+                        <option value="">Select Owner Count</option>
+                        <option value="0">0 (First Owner)</option>
+                        <option value="1">1 (Second Owner)</option>
+                        <option value="2">2 (Third Owner)</option>
+                        <option value="3">3+ (Fourth or More)</option>
+                    </select>
+                </div>
+            </div>
+            
+            <button type="submit" class="predict-btn">
+                <i class="fas fa-calculator"></i> Predict Price
+            </button>
+        </form>
+        
+        {% if show_result %}
+        <div class="result-container {{ 'error' if 'Error' in prediction_text else 'success' }}">
+            <i class="fas {{ 'fa-exclamation-circle' if 'Error' in prediction_text else 'fa-check-circle' }}"></i>
+            <h2>{{ prediction_text }}</h2>
+            {% if car_name and 'Error' not in prediction_text %}
+            <p>For: {{ car_name }}</p>
+            {% endif %}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
